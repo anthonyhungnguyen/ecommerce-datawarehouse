@@ -1,1 +1,8 @@
 *.sql filter=lfs diff=lfs merge=lfs -text
+dwh.sql filter=lfs diff=lfs merge=lfs -text
+oltp.sql filter=lfs diff=lfs merge=lfs -text
+staging.sql filter=lfs diff=lfs merge=lfs -text
+etl-data/staging.sql filter=lfs diff=lfs merge=lfs -text
+etl-data/oltp.sql filter=lfs diff=lfs merge=lfs -text
+etl-data/dwh.sql filter=lfs diff=lfs merge=lfs -text
+etl-data/ filter=lfs diff=lfs merge=lfs -text
