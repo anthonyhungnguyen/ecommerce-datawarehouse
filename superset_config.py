@@ -10,6 +10,6 @@ CACHE_CONFIG = {
     'CACHE_REDIS_DB': 1,
     'CACHE_REDIS_URL': 'redis://redis:6379/1'}
 SQLALCHEMY_DATABASE_URI = \
-    'mysql://root:admin@mysql:3306/DWH?charset=utf8mb4'
+    'mysql://root:admin@mysql:3306/superset?charset=utf8mb4'
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 SECRET_KEY = 'thisISaSECRET_1234'

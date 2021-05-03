@@ -6,3 +6,7 @@ etl-data/staging.sql filter=lfs diff=lfs merge=lfs -text
 etl-data/oltp.sql filter=lfs diff=lfs merge=lfs -text
 etl-data/dwh.sql filter=lfs diff=lfs merge=lfs -text
 etl-data/ filter=lfs diff=lfs merge=lfs -text
+data-volume/* filter=lfs diff=lfs merge=lfs -text
+data-volume/** filter=lfs diff=lfs merge=lfs -text
+superset-volume/** filter=lfs diff=lfs merge=lfs -text
+redis-volume/** filter=lfs diff=lfs merge=lfs -text

@@ -3,9 +3,9 @@ services:
     redis:
         container_name: sad_redis
         image: redis
-        restart: always
+        restart: unless-stopped
         volumes:
-            - redis:/data
+            - ./redis-volume:/data
     mysql:
         container_name: sad_mysql
         command: mysqld --default-authentication-plugin=mysql_native_password
@@ -20,17 +20,11 @@ services:
         volumes:
             - ./data-volume:/var/lib/mysql
             - ./data-source:/data
-
-    # metabase:
-    #     container_name: sad_metabase
-    #     restart: unless-stopped
-    #     image: metabase/metabase
-    #     ports:
-    #         - 3010:3000
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     superset:
         container_name: sad_superset
         image: amancevice/superset
-        restart: always
+        restart: unless-stopped
         depends_on:
             - mysql
         environment:
@@ -39,8 +33,18 @@ services:
             - "8088:8088"
         volumes:
             - ./superset_config.py:/etc/superset/superset_config.py
-
-volumes:
-    data-volume:
-    data-source:
-    redis:
+            - ./superset-volume/superset-data:/home/superset
+            - ./superset-volume/superset-config:/var/lib/superset
+            - ./superset-volume/superset-etc:/etc/superset
+    
+    nginx: 
+        image: nginx:latest
+        container_name: sad_nginx
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf
+        ports:
+            - 80:80
+            - 443:443
+        restart: unless-stopped
+        depends_on:
+            - superset
