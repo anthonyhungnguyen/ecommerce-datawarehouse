@@ -28,7 +28,7 @@ services:
         depends_on:
             - mysql
         environment:
-            MAPBOX_API_KEY: ${MAPBOX_API_KEY}
+            MAPBOX_API_KEY: pk.eyJ1IjoiYW50ZWxvdmUxOSIsImEiOiJja2d1azl4ZmgwY3dvMnJueGljMnp6YnprIn0.aIRE0Ii2AmWYWCW5Z3cEFg
         ports:
             - "8088:8088"
         volumes:
